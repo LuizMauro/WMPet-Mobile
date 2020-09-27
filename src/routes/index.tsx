@@ -7,7 +7,8 @@ import SignUp from "../pages/SignUp";
 
 const Auth = createStackNavigator();
 
-//core padrao
+//cores padrao
+
 //laranja : #f9965f
 // cor para dentro do laranja #fbffff
 
@@ -18,7 +19,7 @@ const Auth = createStackNavigator();
 
 //cards: #ffffff
 
-//cor da font para o resto do app #535353
+//cor da font para dentro dos cards #535353
 
 const AuthRoutes: React.FC = () => (
   <Auth.Navigator
