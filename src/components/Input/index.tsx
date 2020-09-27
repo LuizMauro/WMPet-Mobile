@@ -12,7 +12,7 @@ const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {
   return (
     <Container>
       <IconStyle name={icon} size={20} color="#3c9ce9" />
-      <TextInput {...rest} />
+      <TextInput selectionColor="#3c9ce9" {...rest} />
     </Container>
   );
 };
