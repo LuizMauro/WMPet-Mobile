@@ -1,6 +1,7 @@
 import React from "react";
 import { KeyboardAvoidingView, ScrollView, View, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Form } from "@unform/mobile";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -27,9 +28,11 @@ const SignUp: React.FC = () => {
             <View>
               <Title>Crie sua conta</Title>
             </View>
-            <Input icon="user" name="name" placeholder="Nome completo" />
-            <Input icon="mail" name="email" placeholder="E-mail" />
-            <Input icon="lock" name="password" placeholder="Sua senha" />
+            <Form onSubmit={() => {}}>
+              <Input icon="user" name="name" placeholder="Nome completo" />
+              <Input icon="mail" name="email" placeholder="E-mail" />
+              <Input icon="lock" name="password" placeholder="Sua senha" />
+            </Form>
 
             <Button onPress={() => {}}>Criar conta</Button>
           </Container>
