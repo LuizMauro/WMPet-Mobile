@@ -18,7 +18,7 @@ _Para mais exemplos, consulte a [Wiki][wiki]._
 
 ## Equipe
 
-Seu Nome – [@LuizMauro](https://twitter.com/...) – SeuEmail@exemplo.com
+Luiz Mauro – [@LuizMauro](https://twitter.com/...) – SeuEmail@exemplo.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
@@ -26,7 +26,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Seu Nome – [@LuizMauro](https://twitter.com/...) – SeuEmail@exemplo.com
+Nickolas Ricardo – [@NickolasRicardo](https://twitter.com/...) – SeuEmail@exemplo.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
@@ -34,7 +34,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Seu Nome – [@LuizMauro](https://twitter.com/...) – SeuEmail@exemplo.com
+Matheus Vilela– [@MatheusVilela](https://twitter.com/...) – SeuEmail@exemplo.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
@@ -42,7 +42,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Seu Nome – [@LuizMauro](https://twitter.com/...) – SeuEmail@exemplo.com
+Fernando Sampaio – [@FernandoSampaio](https://twitter.com/...) – SeuEmail@exemplo.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
