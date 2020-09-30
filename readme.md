@@ -2,9 +2,9 @@
 
 > Ache seu pet na palma da sua mão! 🐶🐱
 
-[![NPM Version][npm-image]][npm-url]
+<!-- [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+[![Downloads Stats][npm-downloads]][npm-url] -->
 
 De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
 
@@ -18,11 +18,11 @@ _Para mais exemplos, consulte a [Wiki][wiki]._
 
 ## Equipe
 
-Luiz Mauro – [@LuizMauro](https://twitter.com/...) – SeuEmail@exemplo.com
+Luiz Mauro – [@LuizMauro](https://www.linkedin.com/in/luiz-mauro-rocha-572499190/) – luizmrocha@outlook.com.br
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
-[https://github.com/yourname/github-link](https://github.com/othonalberto/)
+[https://github.com/luizmauro](https://github.com/luizmauro)
 
 ##
 
