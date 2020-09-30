@@ -10,11 +10,11 @@ De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
 
 ![](../header.png)
 
-## Exemplo de uso
+<!-- ## Exemplo de uso
 
 Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado. Adicione blocos de códigos e, se necessário, screenshots.
 
-_Para mais exemplos, consulte a [Wiki][wiki]._
+_Para mais exemplos, consulte a [Wiki][wiki]._ -->
 
 ## Equipe
 
@@ -48,7 +48,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 [https://github.com/yourname/github-link](https://github.com/othonalberto/)
 
-## Contributing
+<!-- ## Contributing
 
 1. Faça o _fork_ do projeto (<https://github.com/yourname/yourproject/fork>)
 2. Crie uma _branch_ para sua modificação (`git checkout -b feature/fooBar`)
@@ -61,4 +61,4 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 [npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/seunome/seuprojeto/wiki
+[wiki]: https://github.com/seunome/seuprojeto/wiki -->
