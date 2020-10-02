@@ -29,9 +29,27 @@ const SignUp: React.FC = () => {
               <Title>Crie sua conta</Title>
             </View>
             <Form onSubmit={() => {}}>
-              <Input icon="user" name="name" placeholder="Nome completo" />
-              <Input icon="mail" name="email" placeholder="E-mail" />
-              <Input icon="lock" name="password" placeholder="Sua senha" />
+              <Input
+                icon="user"
+                name="name"
+                placeholder="Nome completo"
+                autoCorrect={false}
+                autoCapitalize="none"
+              />
+              <Input
+                icon="mail"
+                name="email"
+                placeholder="E-mail"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="email-address"
+              />
+              <Input
+                icon="lock"
+                name="password"
+                placeholder="Sua senha"
+                secureTextEntry
+              />
             </Form>
 
             <Button onPress={() => {}}>Criar conta</Button>
