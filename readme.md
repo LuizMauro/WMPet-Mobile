@@ -34,7 +34,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Matheus Vilela– [@MatheusVilela](https://twitter.com/...) – SeuEmail@exemplo.com
+Matheus Vilela– [@MatheusVilela](https://twitter.com/...) – matheus.vilela.898@gmail.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
