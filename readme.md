@@ -6,8 +6,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url] -->
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-
 ![](../header.png)
 
 <!-- ## Exemplo de uso
