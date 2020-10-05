@@ -6,6 +6,7 @@ import {
   View,
   Platform,
   Alert,
+  Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Form } from "@unform/mobile";
@@ -16,6 +17,7 @@ import { useAuth } from "../../hooks/auth";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import Logo from "../../assets/Logo.png";
 import Icon from "react-native-vector-icons/Feather";
 
 import {
@@ -36,7 +38,7 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
-  const { singIn } = useAuth();
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -53,7 +55,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await singIn({
+        await signIn({
           email: data.email,
           password: data.password,
         });
@@ -74,7 +76,7 @@ const SignIn: React.FC = () => {
         );
       }
     },
-    [singIn]
+    [signIn]
   );
 
   return (
@@ -86,6 +88,7 @@ const SignIn: React.FC = () => {
       >
         <ScrollView contentContainerStyle={{ flex: 1 }}>
           <Container>
+            <Image source={Logo} style={{ width: 170, height: 190 }} />
             <View>
               <Title>Faça seu Login</Title>
             </View>
