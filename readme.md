@@ -6,8 +6,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url] -->
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-
 ![](../header.png)
 
 <!-- ## Exemplo de uso
@@ -34,7 +32,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Matheus Vilela– [@MatheusVilela](https://twitter.com/...) – SeuEmail@exemplo.com
+Matheus Vilela– [@MatheusVilela](https://twitter.com/...) – matheus.vilela.898@gmail.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
