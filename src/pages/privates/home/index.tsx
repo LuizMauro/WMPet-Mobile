@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 import { useAuth } from "../../../hooks/auth";
+import { updateLocation } from "../../../utils/updateLocation";
 
 const home: React.FC = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
+
+  const loadLocation = useCallback(async () => {
+    await updateLocation(user.useID);
+  }, []);
+
+  useEffect(() => {
+    loadLocation();
+  }, []);
+
   return (
     <View>
       <Text>Logado</Text>
