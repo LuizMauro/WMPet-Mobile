@@ -24,11 +24,11 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Nickolas Ricardo – [@NickolasRicardo](https://twitter.com/...) – SeuEmail@exemplo.com
+Nickolas Ricardo – [@NickolasRicardo](https://twitter.com/...) – nickricardo@hotmail.com
 
 Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
-[https://github.com/yourname/github-link](https://github.com/othonalberto/)
+[https://github.com/nilodam](https://github.com/nilodam)
 
 ##
 
