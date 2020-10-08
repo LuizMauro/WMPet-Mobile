@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 import { useAuth } from "../../../hooks/auth";
 import { updateLocation } from "../../../utils/updateLocation";
+import { receiveNotifications } from "../../../utils/getTokenNotification";
 
 const home: React.FC = () => {
   const { signOut, user } = useAuth();
@@ -13,7 +14,10 @@ const home: React.FC = () => {
 
   useEffect(() => {
     loadLocation();
+    receiveNotifications();
   }, []);
+
+  useEffect(() => {}, []);
 
   return (
     <View>
