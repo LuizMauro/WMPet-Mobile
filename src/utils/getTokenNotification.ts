@@ -4,6 +4,8 @@ import * as Permissions from "expo-permissions";
 import { Platform } from "react-native";
 
 export const getToken = async () => {
+  let token = "";
+
   if (Constants.isDevice) {
     const { status: existingStatus } = await Permissions.getAsync(
       Permissions.NOTIFICATIONS
@@ -15,13 +17,14 @@ export const getToken = async () => {
       const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
       finalStatus = status;
     }
+
     if (finalStatus !== "granted") {
       alert("Failed to get push token for push notification!");
       return;
     }
 
-    const token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
+     token = (await Notifications.getExpoPushTokenAsync()).data;
+
   } else {
     alert("Must use physical device for Push Notifications");
   }
@@ -34,6 +37,8 @@ export const getToken = async () => {
       lightColor: "blue",
     });
   }
+
+  return token || null;
 };
 
 export const receiveNotifications = () => {
@@ -46,10 +51,10 @@ export const receiveNotifications = () => {
   });
 
   Notifications.addNotificationReceivedListener((notification) => {
-    console.log(notification);
+    // console.log(notification);
   });
 
   Notifications.addNotificationResponseReceivedListener((response) => {
-    console.log(response);
+    // console.log(response);
   });
 };

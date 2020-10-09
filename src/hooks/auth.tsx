@@ -21,7 +21,7 @@ interface SignInCredentials {
 interface AuthContextData {
   user: User;
   loading: boolean;
-  signIn(credentials: SignInCredentials): Promise<void>;
+  signIn(credentials: SignInCredentials): Promise<User>;
   signOut(): void;
 }
 
@@ -29,6 +29,7 @@ interface User {
   useID: string;
   useName: string;
   useEmail: string;
+  useDeviceID: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -72,6 +73,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     api.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
+    return user;
   }, []);
 
   const signOut = useCallback(async () => {

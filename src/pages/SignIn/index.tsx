@@ -14,6 +14,8 @@ import { FormHandles } from "@unform/core";
 
 import getValidationErrors from "../../utils/getValidationErros";
 import { useAuth } from "../../hooks/auth";
+import { getToken } from '../../utils/getTokenNotification'
+import api from '../../services/api'
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -55,10 +57,22 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await signIn({
+       const { useDeviceID, useID } =  await signIn({
           email: data.email,
           password: data.password,
         });
+
+        const token =  await getToken();
+
+
+        if(useDeviceID !== token){
+          await api.put(`users/edit/deviceid/${useID}`,{
+            useDeviceID: token
+          })
+        }
+
+
+
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
