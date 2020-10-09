@@ -38,7 +38,7 @@ export const getToken = async () => {
     });
   }
 
-  return token || null;
+  return token;
 };
 
 export const receiveNotifications = () => {

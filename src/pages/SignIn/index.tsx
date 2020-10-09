@@ -65,6 +65,7 @@ const SignIn: React.FC = () => {
         const token =  await getToken();
 
 
+
         if(useDeviceID !== token){
           await api.put(`users/edit/deviceid/${useID}`,{
             useDeviceID: token
