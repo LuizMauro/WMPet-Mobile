@@ -10,7 +10,6 @@ export const SearchAnimalsRoutes = () => {
     <StackNavigation.Navigator
       screenOptions={{
         headerShown: true,
-        cardStyle: { backgroundColor: "#f0f4ff" },
       }}
     >
       <StackNavigation.Screen name="Lista Animais" component={Teste} />

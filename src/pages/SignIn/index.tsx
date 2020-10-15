@@ -65,7 +65,6 @@ const SignIn: React.FC = () => {
         const token =  await getToken();
 
 
-
         if(useDeviceID !== token){
           await api.put(`users/edit/deviceid/${useID}`,{
             useDeviceID: token
@@ -80,15 +79,21 @@ const SignIn: React.FC = () => {
 
           formRef.current?.setErrors(errors);
 
+          Alert.alert(
+            "Erro na autenticação",
+            "Ocorreu um erro ao fazer login, cheque as credenciais."
+          );
+
           return;
         }
 
-        console.log(err);
-
         Alert.alert(
-          "Erro na autenticação",
-          "Ocorreu um erro ao fazer login, cheque as credenciais."
+          "Ops...",
+          "Ocorreu um erro interno"
         );
+
+
+
       }
     },
     [signIn]

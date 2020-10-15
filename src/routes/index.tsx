@@ -5,13 +5,15 @@ import PrivateRoutes from "./private.routes";
 
 import { useAuth } from "../hooks/auth";
 
+import { colors } from "../styles/colors";
+
 const routes: React.FC = () => {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color="#3c9ce9" />
+        <ActivityIndicator size="large" color={colors.azul} />
       </View>
     );
   }

@@ -5,6 +5,9 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Home from "../pages/privates/home";
 
 import { SearchAnimalsRoutes } from "./searchAnimals";
+import { ProfileRoutes } from "./Profile";
+
+import { colors } from "../styles/colors";
 
 const BottomNavigation = createBottomTabNavigator();
 
@@ -12,9 +15,12 @@ const PrivateRoutes: React.FC = () => (
   <NavigationContainer independent={true}>
     <BottomNavigation.Navigator
       tabBarOptions={{
-        tabStyle: { backgroundColor: "#3c9ce9" },
-        labelStyle: { color: "#fbffff", fontSize: 14 },
-        iconStyle: { color: "#fbffff", fontSize: 24, backgroundColor: "red" },
+        tabStyle: { backgroundColor: colors.azul },
+        labelStyle: { color: colors.colorIconMenu, fontSize: 14 },
+        iconStyle: {
+          color: colors.colorIconMenu,
+          fontSize: 24,
+        },
       }}
     >
       <BottomNavigation.Screen name="Home" component={Home} />
@@ -26,6 +32,16 @@ const PrivateRoutes: React.FC = () => (
           ),
         }}
         component={SearchAnimalsRoutes}
+      />
+
+      <BottomNavigation.Screen
+        name="Perfil"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="logo-android" size={size} color={color} />
+          ),
+        }}
+        component={ProfileRoutes}
       />
     </BottomNavigation.Navigator>
   </NavigationContainer>
