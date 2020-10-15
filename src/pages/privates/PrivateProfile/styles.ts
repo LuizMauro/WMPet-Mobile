@@ -53,7 +53,7 @@ export const TextDataUser = styled.Text`
 
 export const Content = styled.View`
   margin-top: 200px;
-  min-height: 600px;
+  min-height: 400px;
 `;
 
 interface Animal {

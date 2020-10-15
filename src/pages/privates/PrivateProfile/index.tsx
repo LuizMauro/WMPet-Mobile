@@ -53,6 +53,7 @@ const PrivateProfile: React.FC = () => {
               renderItem={(item) => (
                 <TextDataUser> {item.item.name} </TextDataUser>
               )}
+              keyExtractor={(item, index) => index.toString()}
             />
           </Content>
         </Container>
