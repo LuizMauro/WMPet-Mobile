@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, FlatList } from "react-native";
+import { ScrollView } from "react-native";
 import { FloatingAction } from "react-native-floating-action";
 
 import {
@@ -11,6 +11,7 @@ import {
   Content,
   TextDataUser,
   ListAnimals,
+  ItemListAnimal,
 } from "./styles";
 
 import { colors } from "../../../styles/colors";
@@ -33,31 +34,71 @@ const DATA: Animal[] = [
     id: 3,
     name: "Third Item",
   },
+  {
+    id: 1,
+    name: "First Item",
+  },
+  {
+    id: 1,
+    name: "First Item",
+  },
+  {
+    id: 2,
+    name: "Second Item",
+  },
+  {
+    id: 3,
+    name: "Third Item",
+  },
+  {
+    id: 1,
+    name: "First Item",
+  },
+  {
+    id: 1,
+    name: "First Item",
+  },
+  {
+    id: 2,
+    name: "Second Item",
+  },
+  {
+    id: 3,
+    name: "Third Item",
+  },
+  {
+    id: 1,
+    name: "teste",
+  },
 ];
 
 const PrivateProfile: React.FC = () => {
+  const renderHeader = () => {
+    return (
+      <Container>
+        <Header>
+          <PhotoUser></PhotoUser>
+          <NameUser> Nome do Arrombado </NameUser>
+        </Header>
+        <DataUser style={{ elevation: 1 }}>
+          <TextDataUser>teste isso aqui</TextDataUser>
+        </DataUser>
+        <Content></Content>
+      </Container>
+    );
+  };
   return (
     <>
-      <ScrollView>
-        <Container>
-          <Header>
-            <PhotoUser></PhotoUser>
-            <NameUser> Nome do Arrombado </NameUser>
-          </Header>
-          <DataUser>
-            <TextDataUser>teste isso aqui</TextDataUser>
-          </DataUser>
-          <Content>
-            <ListAnimals
-              data={DATA}
-              renderItem={(item) => (
-                <TextDataUser> {item.item.name} </TextDataUser>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </Content>
-        </Container>
-      </ScrollView>
+      <ListAnimals
+        ListHeaderComponent={renderHeader}
+        data={DATA}
+        renderItem={(item) => (
+          <ItemListAnimal>
+            <TextDataUser> {item.item.name} </TextDataUser>
+          </ItemListAnimal>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+      />
 
       <FloatingAction color={colors.laranja} />
     </>

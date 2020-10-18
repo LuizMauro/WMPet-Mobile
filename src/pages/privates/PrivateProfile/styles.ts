@@ -14,7 +14,7 @@ export const Header = styled.View`
   justify-content: center;
   align-items: center;
 
-  height: 300px;
+  height: 250px;
   width: 100%;
   background-color: ${colors.azul};
 `;
@@ -39,7 +39,7 @@ export const DataUser = styled.View`
 
   position: absolute;
 
-  top: 240px;
+  top: 200px;
 
   border-radius: 10px;
   background-color: #fff;
@@ -52,8 +52,7 @@ export const TextDataUser = styled.Text`
 `;
 
 export const Content = styled.View`
-  margin-top: 200px;
-  min-height: 400px;
+  min-height: 200px;
 `;
 
 interface Animal {
@@ -61,4 +60,12 @@ interface Animal {
   name: string;
 }
 
-export const ListAnimals = styled(FlatList as new () => FlatList<Animal>)``;
+export const ItemListAnimal = styled.View`
+  height: 60px;
+  background-color: red;
+  margin: 0 10px 0 10px;
+`;
+
+export const ListAnimals = styled(FlatList as new () => FlatList<Animal>)`
+  flex-grow: 1;
+`;
