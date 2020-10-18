@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { FlatList } from "react-native";
 
 import { colors } from "../../../styles/colors";
+import {CardProps} from "../../../components/AnimalCard";
 
 export const Container = styled.View`
   display: flex;
@@ -55,10 +56,7 @@ export const Content = styled.View`
   min-height: 200px;
 `;
 
-interface Animal {
-  id: number;
-  name: string;
-}
+
 
 export const ItemListAnimal = styled.View`
   height: 60px;
@@ -66,6 +64,6 @@ export const ItemListAnimal = styled.View`
   margin: 0 10px 0 10px;
 `;
 
-export const ListAnimals = styled(FlatList as new () => FlatList<Animal>)`
+export const ListAnimals = styled(FlatList as new () => FlatList<CardProps>)`
   flex-grow: 1;
 `;

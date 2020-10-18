@@ -1,6 +1,8 @@
 import React from "react";
 import { FloatingAction } from "react-native-floating-action";
 
+import AnimalCard,{CardProps} from "../../../components/AnimalCard";
+
 import {
   Container,
   Header,
@@ -10,64 +12,37 @@ import {
   Content,
   TextDataUser,
   ListAnimals,
-  ItemListAnimal,
 } from "./styles";
 
 import { colors } from "../../../styles/colors";
 
-interface Animal {
-  id: number;
-  name: string;
-}
 
-const DATA: Animal[] = [
+const DATA: CardProps[] = [
   {
-    id: 1,
-    name: "First Item",
+    ID:"1",
+    Name:"Bilu",
+    Race: "Outros",
+    Species: true,
+    To: "Detalhes"
   },
   {
-    id: 2,
-    name: "Second Item",
-  },
-  {
-    id: 3,
-    name: "Third Item",
-  },
-  {
-    id: 1,
-    name: "First Item",
-  },
-  {
-    id: 1,
-    name: "First Item",
-  },
-  {
-    id: 2,
-    name: "Second Item",
-  },
-  {
-    id: 3,
-    name: "Third Item",
-  },
-  {
-    id: 1,
-    name: "First Item",
-  },
-  {
-    id: 1,
-    name: "First Item",
-  },
-  {
-    id: 2,
-    name: "Second Item",
-  },
-  {
-    id: 3,
-    name: "Third Item",
-  },
-  {
-    id: 1,
-    name: "teste",
+    ID:"2",
+    Name:"Bilu2",
+    Race: "Outros",
+    Species: true,
+    To: "Detalhes"
+  },{
+    ID:"3",
+    Name:"Bilu3",
+    Race: "Outros",
+    Species: true,
+    To: "Detalhes"
+  },{
+    ID:"4",
+    Name:"Bilu4",
+    Race: "Outros",
+    Species: true,
+    To: "Detalhes"
   },
 ];
 
@@ -92,9 +67,14 @@ const PrivateProfile: React.FC = () => {
         ListHeaderComponent={renderHeader}
         data={DATA}
         renderItem={(item) => (
-          <ItemListAnimal>
-            <TextDataUser> {item.item.name} </TextDataUser>
-          </ItemListAnimal>
+          <Container><AnimalCard 
+            ID={item.item.ID} 
+            Name={item.item.Name} 
+            Race={item.item.Race} 
+            To={item.item.To} 
+            Species={item.item.Species}
+             />
+             </Container>
         )}
         keyExtractor={(item, index) => index.toString()}
       />
