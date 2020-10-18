@@ -1,5 +1,4 @@
 import React from "react";
-import { ScrollView } from "react-native";
 import { FloatingAction } from "react-native-floating-action";
 
 import {
