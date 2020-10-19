@@ -26,8 +26,8 @@ export const CardImageBox = styled.ImageBackground`
   width:30%;
   flex:1;
   flex-grow: 1;
-  border-radius: 22px;
-  
+  border-radius: 10px;
+  elevation: 3;
 `;
 
 

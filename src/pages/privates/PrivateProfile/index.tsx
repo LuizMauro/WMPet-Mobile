@@ -1,20 +1,21 @@
 import React from "react";
 import { FloatingAction } from "react-native-floating-action";
 
-import AnimalCard,{CardProps} from "../../../components/AnimalCard";
+import { useAuth } from "../../../hooks/auth";
 
+import AnimalCard,{CardProps} from "../../../components/AnimalCard";
+import { colors } from "../../../styles/colors";
 import {
   Container,
   Header,
   PhotoUser,
   DataUser,
   NameUser,
+  EmailUser,
   Content,
   TextDataUser,
   ListAnimals,
 } from "./styles";
-
-import { colors } from "../../../styles/colors";
 
 
 const DATA: CardProps[] = [
@@ -47,12 +48,17 @@ const DATA: CardProps[] = [
 ];
 
 const PrivateProfile: React.FC = () => {
+
+  const {user} = useAuth(); 
+
   const renderHeader = () => {
     return (
       <Container>
         <Header>
           <PhotoUser></PhotoUser>
-          <NameUser> Nome do Arrombado </NameUser>
+          <NameUser> {user.useName} </NameUser>
+          <EmailUser> {user.useEmail} </EmailUser>
+
         </Header>
         <DataUser style={{ elevation: 1 }}>
           <TextDataUser>teste isso aqui</TextDataUser>

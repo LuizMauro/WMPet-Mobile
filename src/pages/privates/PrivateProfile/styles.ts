@@ -29,18 +29,24 @@ export const PhotoUser = styled.View`
 `;
 
 export const NameUser = styled.Text`
-  margin: 5px;
+  margin-top: 5px;
   color: ${colors.colorFontBGAzul};
   font-size: 16px;
 `;
 
+export const EmailUser = styled.Text`
+  margin-bottom: 5px;
+  color: ${colors.colorFontBGAzul};
+  font-size: 13px;
+`;
+
 export const DataUser = styled.View`
   height: 200px;
-  width: 85%;
+  width: 90%;
 
   position: absolute;
 
-  top: 200px;
+  top: 220px;
 
   border-radius: 10px;
   background-color: #fff;

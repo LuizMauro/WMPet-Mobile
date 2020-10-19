@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -32,13 +32,13 @@ const AnimalCard: React.FC<CardProps> = ({ID, Name, Race, Species, To}) => {
 
   return (
     <CardBox> 
-        <CardImageBox source={DOG} resizeMode="cover">            
+        <CardImageBox source={DOG} resizeMode="cover" imageStyle={{ borderTopLeftRadius: 10, borderBottomLeftRadius: 10}}>            
            </CardImageBox>
         <CardDescription>
           <CardText>
-            <CardTitle> Nome: {Name} </CardTitle>
+          <CardTitle> Tipo: {Species? "Cachorro" : "Gato"} </CardTitle> 
             <CardTitle> Raça: {Race} </CardTitle>
-            <CardTitle> Tipo: {Species? "Cachorro" : "Gato"} </CardTitle> 
+            <CardTitle> Nome: {Name} </CardTitle>
           </CardText>
           <CardButton style={{borderTopWidth:1, borderTopColor: darken("0.1",colors.fontColorCard)}}>
                <TouchableOpacity onPress={()=>navigation.navigate(To)} style={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center"}}>
