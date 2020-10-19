@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -7,8 +8,12 @@ import Home from "../pages/privates/home";
 import { SearchAnimalsRoutes } from "./searchAnimals";
 import { ProfileRoutes } from "./Profile";
 
-import { darken } from "polished";
 import { colors } from "../styles/colors";
+
+import IconMap from "../assets/menu-mapa.png";
+import IconSearch from "../assets/menu-procurase.png";
+import IconParceiros from "../assets/menu-parceiros.png";
+import IconPets from "../assets/menu-meuspets.png";
 
 const BottomNavigation = createBottomTabNavigator();
 
@@ -16,41 +21,69 @@ const PrivateRoutes: React.FC = () => (
   <NavigationContainer independent={true}>
     <BottomNavigation.Navigator
       tabBarOptions={{
-        tabStyle: { backgroundColor: colors.azul, elevation: 1 },
-        labelStyle: { fontSize: 14 },
-        iconStyle: {
-          color: "red",
-          fontSize: 24,
-          backgroundColor: "red",
-        },
-        activeTintColor: colors.laranja,
-        inactiveTintColor: darken("0.2", "#fff"),
+        inactiveBackgroundColor: colors.azul,
+        style: { height: 60 },
+        tabStyle: { elevation: 1 },
+        labelStyle: { fontSize: 11, marginBottom: 3 },
+        activeBackgroundColor: colors.laranja,
+        inactiveTintColor: "#fff",
+        activeTintColor: "#fff",
       }}
     >
       <BottomNavigation.Screen
-        name="Home"
+        name="Mapa"
         component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name="home" size={size} color={color} />
+            <Image
+              source={IconMap}
+              style={{ height: 30, width: 26 }}
+              height={0}
+              width={0}
+            />
           ),
         }}
       />
       <BottomNavigation.Screen
-        name="Animais perdidos"
+        name="Procura-se"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name="pets" size={size} color={color} />
+            <Image
+              source={IconSearch}
+              style={{ height: 30, width: 30 }}
+              height={0}
+              width={0}
+            />
           ),
         }}
         component={SearchAnimalsRoutes}
       />
 
       <BottomNavigation.Screen
-        name="Perfil"
+        name="Meus pets"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name="person" size={size} color={color} />
+            <Image
+              source={IconPets}
+              style={{ height: 29, width: 32 }}
+              height={0}
+              width={0}
+            />
+          ),
+        }}
+        component={SearchAnimalsRoutes}
+      />
+
+      <BottomNavigation.Screen
+        name="Parceiros"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={IconParceiros}
+              style={{ height: 30, width: 30 }}
+              height={0}
+              width={0}
+            />
           ),
         }}
         component={ProfileRoutes}

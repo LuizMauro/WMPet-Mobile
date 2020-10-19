@@ -20,7 +20,8 @@ import { receiveNotifications } from "../../../utils/getTokenNotification";
 
 import { Container } from "./styles";
 
-import IconPersonMarker from "../../../assets/PersonMarkerIcon.png";
+import IconPersonMarker from "../../../assets/mapa-pessoa.png";
+import IconPetMarker from "../../../assets/mapa-pet.png";
 import { colors } from "../../../styles/colors";
 
 interface ILocation {
@@ -97,6 +98,20 @@ const home: React.FC = () => {
           <Callout tooltip>
             <View style={{ borderRadius: 10 }}>
               <Text> Você está aqui! </Text>
+            </View>
+          </Callout>
+        </Marker>
+
+        <Marker
+          icon={IconPetMarker}
+          coordinate={{
+            latitude: -22.8092617,
+            longitude: -45.1930892,
+          }}
+        >
+          <Callout tooltip>
+            <View style={{ borderRadius: 10, width: "auto" }}>
+              <Text> AU AUAUAUUUUUU AUUUU!!!</Text>
             </View>
           </Callout>
         </Marker>
