@@ -1,11 +1,6 @@
-import React, { useEffect, useCallback, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-  ActivityIndicator,
-} from "react-native";
+import React, { useCallback, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import { View, Text, Dimensions, ActivityIndicator } from "react-native";
 
 import MapView, {
   PROVIDER_GOOGLE,
@@ -13,10 +8,11 @@ import MapView, {
   Circle,
   Callout,
 } from "react-native-maps";
+import { FloatingAction } from "react-native-floating-action";
 
 import { useAuth } from "../../../hooks/auth";
 import { updateLocation, getLocation } from "../../../utils/updateLocation";
-import { receiveNotifications } from "../../../utils/getTokenNotification";
+import api from "../../../services/api";
 
 import { Container } from "./styles";
 
@@ -29,32 +25,54 @@ interface ILocation {
   long: number;
 }
 
+interface ISearchAnimal {
+  seaLongitude: string;
+  seaLatitude: string;
+  seaID: string;
+  aniID: { aniID: string };
+}
+
 const home: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+  const [searchAnimals, setSearchAnimals] = useState<ISearchAnimal[]>([]);
   const [locationCurrent, setLocationCurrent] = useState<ILocation>(
     {} as ILocation
   );
-  const { signOut, user } = useAuth();
+  const { user } = useAuth();
 
-  const loadLocation = useCallback(async () => {
-    await updateLocation(user.useID);
-    const currentLocation = await getLocation();
+  useFocusEffect(
+    useCallback(() => {
+      let isActive = true;
+      setLoading(true);
 
-    setLocationCurrent({
-      lat: currentLocation.coords.latitude,
-      long: currentLocation.coords.longitude,
-    });
-  }, []);
+      const loadDatasPag = async () => {
+        await updateLocation(user.useID);
+        const currentLocation = await getLocation();
 
-  useEffect(() => {
-    loadLocation();
-    receiveNotifications();
-  }, []);
+        setLocationCurrent({
+          lat: currentLocation.coords.latitude,
+          long: currentLocation.coords.longitude,
+        });
 
-  useEffect(() => {}, []);
+        const response = await api.get(
+          `search-animals/range/${currentLocation.coords.longitude}/${currentLocation.coords.latitude}`
+        );
 
-  if (!locationCurrent.lat && !locationCurrent.long) {
+        setSearchAnimals(response.data);
+      };
+
+      loadDatasPag();
+      setLoading(false);
+
+      return () => {
+        isActive = false;
+      };
+    }, [])
+  );
+
+  if ((!locationCurrent.lat && !locationCurrent.long) || loading) {
     return (
-      <Container>
+      <Container style={{ backgroundColor: colors.bgDefault }}>
         <ActivityIndicator color={colors.laranja} size="large" />
       </Container>
     );
@@ -62,11 +80,6 @@ const home: React.FC = () => {
 
   return (
     <Container>
-      {/* <Text>Logado</Text>
-      <TouchableOpacity onPress={() => signOut()}>
-        <Text>Sair</Text>
-      </TouchableOpacity> */}
-
       <MapView
         provider={PROVIDER_GOOGLE}
         style={{
@@ -102,20 +115,37 @@ const home: React.FC = () => {
           </Callout>
         </Marker>
 
-        <Marker
-          icon={IconPetMarker}
-          coordinate={{
-            latitude: -22.8092617,
-            longitude: -45.1930892,
-          }}
-        >
-          <Callout tooltip>
-            <View style={{ borderRadius: 10, width: "auto" }}>
-              <Text> AU AUAUAUUUUUU AUUUU!!!</Text>
-            </View>
-          </Callout>
-        </Marker>
+        {searchAnimals.map((animal: ISearchAnimal, index) => (
+          <Marker
+            key={index}
+            icon={IconPetMarker}
+            coordinate={{
+              latitude: parseFloat(animal.seaLatitude),
+              longitude: parseFloat(animal.seaLongitude),
+            }}
+          >
+            <Callout tooltip>
+              <View>
+                <Text> {animal.seaLongitude}</Text>
+              </View>
+            </Callout>
+          </Marker>
+        ))}
       </MapView>
+      <FloatingAction
+        color={colors.laranja}
+        actions={[
+          {
+            text: "Adicionar",
+            icon: IconPetMarker,
+            name: "Adicionar",
+            color: colors.azul,
+          },
+        ]}
+        onPressItem={(name) => {
+          console.log(name);
+        }}
+      />
     </Container>
   );
 };

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FloatingAction } from "react-native-floating-action";
 
 import { useAuth } from "../../../hooks/auth";
 
-import AnimalCard,{CardProps} from "../../../components/AnimalCard";
+import AnimalCard, { CardProps } from "../../../components/AnimalCard";
 import { colors } from "../../../styles/colors";
 import {
   Container,
@@ -17,39 +17,45 @@ import {
   ListAnimals,
 } from "./styles";
 
+import { Text, TouchableOpacity } from "react-native";
 
 const DATA: CardProps[] = [
   {
-    ID:"1",
-    Name:"Bilu",
+    ID: "1",
+    Name: "Bilu",
     Race: "Outros",
     Species: true,
-    To: "Detalhes"
+    To: "Detalhes",
   },
   {
-    ID:"2",
-    Name:"Bilu2",
+    ID: "2",
+    Name: "Bilu2",
     Race: "Outros",
     Species: true,
-    To: "Detalhes"
-  },{
-    ID:"3",
-    Name:"Bilu3",
+    To: "Detalhes",
+  },
+  {
+    ID: "3",
+    Name: "Bilu3",
     Race: "Outros",
     Species: true,
-    To: "Detalhes"
-  },{
-    ID:"4",
-    Name:"Bilu4",
+    To: "Detalhes",
+  },
+  {
+    ID: "4",
+    Name: "Bilu4",
     Race: "Outros",
     Species: true,
-    To: "Detalhes"
+    To: "Detalhes",
   },
 ];
 
 const PrivateProfile: React.FC = () => {
+  const { user, signOut } = useAuth();
 
-  const {user} = useAuth(); 
+  useEffect(() => {
+    console.log("teste 2");
+  }, []);
 
   const renderHeader = () => {
     return (
@@ -58,10 +64,13 @@ const PrivateProfile: React.FC = () => {
           <PhotoUser></PhotoUser>
           <NameUser> {user.useName} </NameUser>
           <EmailUser> {user.useEmail} </EmailUser>
-
         </Header>
         <DataUser style={{ elevation: 1 }}>
           <TextDataUser>teste isso aqui</TextDataUser>
+
+          <TouchableOpacity onPress={() => signOut()}>
+            <Text>Sair</Text>
+          </TouchableOpacity>
         </DataUser>
         <Content></Content>
       </Container>
@@ -73,14 +82,15 @@ const PrivateProfile: React.FC = () => {
         ListHeaderComponent={renderHeader}
         data={DATA}
         renderItem={(item) => (
-          <Container><AnimalCard 
-            ID={item.item.ID} 
-            Name={item.item.Name} 
-            Race={item.item.Race} 
-            To={item.item.To} 
-            Species={item.item.Species}
-             />
-             </Container>
+          <Container>
+            <AnimalCard
+              ID={item.item.ID}
+              Name={item.item.Name}
+              Race={item.item.Race}
+              To={item.item.To}
+              Species={item.item.Species}
+            />
+          </Container>
         )}
         keyExtractor={(item, index) => index.toString()}
       />

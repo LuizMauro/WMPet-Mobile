@@ -1,13 +1,5 @@
-import React, { useState } from "react";
 import * as Location from "expo-location";
 import api from "../services/api";
-
-// const [longitude, setLongitude] = useState<number>();
-// const [latidude, setLatitude] = useState<number>();
-
-// export const exportCoords = () => {
-//   return { latitude: latidude, longitude: longitude };
-// };
 
 export const getLocation = async () => {
   const { status } = await Location.requestPermissionsAsync();
@@ -15,10 +7,7 @@ export const getLocation = async () => {
   if (status != "granted") {
     alert("Permission to access location was denied");
   }
-  const location = await Location.getCurrentPositionAsync({});
-
-  // setLongitude(location.coords.longitude);
-  // setLatitude(location.coords.latitude);
+  const location = await Location.getCurrentPositionAsync();
 
   return location;
 };
