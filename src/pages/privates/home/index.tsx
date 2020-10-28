@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { View, Text, Dimensions, ActivityIndicator } from "react-native";
 
 import MapView, {
@@ -33,6 +33,7 @@ interface ISearchAnimal {
 }
 
 const home: React.FC = () => {
+  const { navigate } = useNavigation();
   const [loading, setLoading] = useState(false);
   const [searchAnimals, setSearchAnimals] = useState<ISearchAnimal[]>([]);
   const [locationCurrent, setLocationCurrent] = useState<ILocation>(
@@ -144,6 +145,10 @@ const home: React.FC = () => {
         ]}
         onPressItem={(name) => {
           console.log(name);
+
+          if (name === "Adicionar") {
+            navigate("Select Animal");
+          }
         }}
       />
     </Container>

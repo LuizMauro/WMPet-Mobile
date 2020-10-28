@@ -3,7 +3,7 @@ import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import Home from "../pages/privates/home";
+import { RegisterAnimalsAndHome } from "./RegisterAnimals";
 import { SearchAnimalsRoutes } from "./searchAnimals";
 import { ProfileRoutes } from "./Profile";
 
@@ -31,7 +31,7 @@ const PrivateRoutes: React.FC = () => (
     >
       <BottomNavigation.Screen
         name="Mapa"
-        component={Home}
+        component={RegisterAnimalsAndHome}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Image
