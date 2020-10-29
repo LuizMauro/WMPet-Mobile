@@ -1,7 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import PrivateProfile from "../../pages/privates/PrivateProfile";
+import PrivateProfile from "../../pages/PrivatesPages/PrivateProfilePage";
+import FormAnimal from "../../pages/PrivatesPages/PrivateProfilePage/formAnimal";
 
 const StackNavigation = createStackNavigator();
 
@@ -13,6 +14,11 @@ export const ProfileRoutes = () => {
       }}
     >
       <StackNavigation.Screen name="profile" component={PrivateProfile} />
+      <StackNavigation.Screen
+        options={{ headerShown: true, title: "Cadastrar meu pet" }}
+        name="My Pet Form"
+        component={FormAnimal}
+      />
       {/* <StackNavigation.Screen name="Detalhes" component={Teste2} /> */}
     </StackNavigation.Navigator>
   );

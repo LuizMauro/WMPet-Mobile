@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+
 import { FloatingAction } from "react-native-floating-action";
 
 import { useAuth } from "../../../hooks/auth";
@@ -18,6 +20,8 @@ import {
 } from "./styles";
 
 import { Text, TouchableOpacity } from "react-native";
+
+import IconPetMarker from "../../../assets/mapa-pet.png";
 
 const DATA: CardProps[] = [
   {
@@ -51,6 +55,7 @@ const DATA: CardProps[] = [
 ];
 
 const PrivateProfile: React.FC = () => {
+  const { navigate } = useNavigation();
   const { user, signOut } = useAuth();
 
   useEffect(() => {
@@ -95,7 +100,24 @@ const PrivateProfile: React.FC = () => {
         keyExtractor={(item, index) => index.toString()}
       />
 
-      <FloatingAction color={colors.laranja} />
+      <FloatingAction
+        color={colors.laranja}
+        actions={[
+          {
+            text: "Adicionar",
+            icon: IconPetMarker,
+            name: "Adicionar",
+            color: colors.azul,
+          },
+        ]}
+        onPressItem={(name) => {
+          console.log(name);
+
+          if (name === "Adicionar") {
+            navigate("My Pet Form");
+          }
+        }}
+      />
     </>
   );
 };

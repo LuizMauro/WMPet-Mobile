@@ -9,10 +9,11 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
-import { getLocation } from "../../../../utils/updateLocation";
+import { getLocation } from "../../../../../utils/updateLocation";
 
-import IconPersonMarker from "../../../../assets/mapa-pessoa.png";
-import { colors } from "../../../../styles/colors";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import IconPersonMarker from "../../../../../assets/mapa-pessoa.png";
+import { colors } from "../../../../../styles/colors";
 
 const SelectMapPosition: React.FC = () => {
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
@@ -34,7 +35,14 @@ const SelectMapPosition: React.FC = () => {
 
   if (!posistionCurrent.latitude && !posistionCurrent.longitude) {
     return (
-      <View style={{ backgroundColor: colors.bgDefault }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: colors.bgDefault,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <ActivityIndicator color={colors.laranja} size="large" />
       </View>
     );
@@ -66,9 +74,14 @@ const SelectMapPosition: React.FC = () => {
       {!!position.latitude && (
         <RectButton
           style={styles.nextButton}
-          onPress={() => navigate("OrphanageData", { position })}
+          onPress={() => navigate("Register Animal", { position })}
         >
-          <Text style={styles.nextButtonText}>Próximo</Text>
+          <Text style={styles.nextButtonText}>Continue</Text>
+          <Icon
+            size={25}
+            name="navigate-next"
+            color={colors.colorFontBGLaranja}
+          />
         </RectButton>
       )}
     </View>
@@ -87,9 +100,11 @@ const styles = StyleSheet.create({
   },
 
   nextButton: {
+    display: "flex",
+    flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f9965f",
-    borderRadius: 20,
+    borderRadius: 10,
     bottom: 40,
     height: 56,
     justifyContent: "center",
@@ -99,7 +114,7 @@ const styles = StyleSheet.create({
   },
 
   nextButtonText: {
-    color: "#fff",
+    color: colors.colorFontBGLaranja,
     fontSize: 16,
   },
 });

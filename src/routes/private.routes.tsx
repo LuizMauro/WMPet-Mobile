@@ -3,16 +3,18 @@ import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { RegisterAnimalsAndHome } from "./RegisterAnimals";
-import { SearchAnimalsRoutes } from "./searchAnimals";
-import { ProfileRoutes } from "./Profile";
+import { HomeRouter } from "./HomeRouter";
+import { SearchAnimalsRoutes } from "./searchAnimalsRouter";
+import { ProfileRoutes } from "./ProfileRouter";
 
 import { colors } from "../styles/colors";
 
+import Icon from "react-native-vector-icons/Ionicons";
 import IconMap from "../assets/menu-mapa.png";
 import IconSearch from "../assets/menu-procurase.png";
 import IconParceiros from "../assets/menu-parceiros.png";
 import IconPets from "../assets/menu-meuspets.png";
+import IconPerson from "../assets/Icon-person.png";
 
 const BottomNavigation = createBottomTabNavigator();
 
@@ -30,8 +32,8 @@ const PrivateRoutes: React.FC = () => (
       }}
     >
       <BottomNavigation.Screen
-        name="Mapa"
-        component={RegisterAnimalsAndHome}
+        name="Home"
+        component={HomeRouter}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Image
@@ -43,6 +45,7 @@ const PrivateRoutes: React.FC = () => (
           ),
         }}
       />
+
       <BottomNavigation.Screen
         name="Procura-se"
         options={{
@@ -74,12 +77,12 @@ const PrivateRoutes: React.FC = () => (
       />
 
       <BottomNavigation.Screen
-        name="Parceiros"
+        name="Perfil"
         options={{
           tabBarIcon: ({ color, size }) => (
             <Image
-              source={IconParceiros}
-              style={{ height: 30, width: 30 }}
+              source={IconPerson}
+              style={{ height: 27, width: 27 }}
               height={0}
               width={0}
             />
