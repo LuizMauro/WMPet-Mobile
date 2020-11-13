@@ -137,17 +137,23 @@ const home: React.FC = () => {
         color={colors.laranja}
         actions={[
           {
-            text: "Adicionar",
+            text: "Animal perdido",
             icon: IconPetMarker,
-            name: "Adicionar",
+            name: "perdido",
+            color: colors.azul,
+          },
+          {
+            text: "Animal encontrado",
+            icon: IconPetMarker,
+            name: "encontrado",
             color: colors.azul,
           },
         ]}
         onPressItem={(name) => {
-          console.log(name);
-
-          if (name === "Adicionar") {
+          if (name === "perdido") {
             navigate("Select Animal");
+          } else if (name === "encontrado") {
+            console.log("encontrado");
           }
         }}
       />
