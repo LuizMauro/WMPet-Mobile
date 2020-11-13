@@ -15,7 +15,7 @@ export const ProfileRoutes = () => {
     >
       <StackNavigation.Screen name="profile" component={PrivateProfile} />
       <StackNavigation.Screen
-        options={{ headerShown: true, title: "Cadastrar meu pet" }}
+        options={{ headerShown: true, title: "Novo Pet" }}
         name="My Pet Form"
         component={FormAnimal}
       />
