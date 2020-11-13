@@ -10,6 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
 import { getLocation } from "../../../../../utils/updateLocation";
+import { MapConfig } from "../../../../../utils/MapConfig";
+
 
 import Icon from "react-native-vector-icons/MaterialIcons";
 import IconPersonMarker from "../../../../../assets/mapa-pessoa.png";
@@ -59,6 +61,9 @@ const SelectMapPosition: React.FC = () => {
           latitudeDelta: 0.02,
           longitudeDelta: 0.02,
         }}
+
+        customMapStyle={MapConfig}
+
       >
         {!!position.latitude && (
           <Marker

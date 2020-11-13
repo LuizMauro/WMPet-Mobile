@@ -16,27 +16,27 @@ import api from "../../../services/api";
 import { MapConfig } from "../../../utils/MapConfig";
 
 import { Container } from "./styles";
-
 import IconPersonMarker from "../../../assets/mapa-pessoa.png";
-import IconPetMarker from "../../../assets/mapa-pet.png";
+import IconPartner from "../../../assets/Icon.png";
 import { colors } from "../../../styles/colors";
+
 
 interface ILocation {
   lat: number;
   long: number;
 }
 
-interface ISearchAnimal {
-  seaLongitude: string;
-  seaLatitude: string;
-  seaID: string;
-  aniID: { aniID: string };
+interface IPartner {
+  parLongitude: string;
+  parLatitude: string;
+  parID: string;
+  parName: string;
 }
 
 const home: React.FC = () => {
   const { navigate } = useNavigation();
   const [loading, setLoading] = useState(false);
-  const [searchAnimals, setSearchAnimals] = useState<ISearchAnimal[]>([]);
+  const [partner, setPartner] = useState<IPartner[]>([]);
   const [locationCurrent, setLocationCurrent] = useState<ILocation>(
     {} as ILocation
   );
@@ -57,10 +57,10 @@ const home: React.FC = () => {
         });
 
         const response = await api.get(
-          `search-animals/range/${currentLocation.coords.longitude}/${currentLocation.coords.latitude}`
+          `partners/range/${currentLocation.coords.longitude}/${currentLocation.coords.latitude}`
         );
-
-        setSearchAnimals(response.data);
+            console.log(response.data);
+        setPartner(response.data);
       };
 
       loadDatasPag();
@@ -83,7 +83,7 @@ const home: React.FC = () => {
   return (
     <Container>
       <MapView
-        provider={PROVIDER_GOOGLE}
+       
         style={{
           width: Dimensions.get("window").width / 0.5,
           height: Dimensions.get("window").height / 0.5,
@@ -94,8 +94,8 @@ const home: React.FC = () => {
           latitudeDelta: 0.004,
           longitudeDelta: 0.004,
         }}
+        provider={PROVIDER_GOOGLE}
         customMapStyle={MapConfig}
-
       >
         <Circle
           center={{
@@ -119,41 +119,25 @@ const home: React.FC = () => {
           </Callout>
         </Marker>
 
-        {searchAnimals.map((animal: ISearchAnimal, index) => (
+        {partner.map((partner: IPartner, index) => (
           <Marker
             key={index}
-            icon={IconPetMarker}
+            icon={IconPartner}
             coordinate={{
-              latitude: parseFloat(animal.seaLatitude),
-              longitude: parseFloat(animal.seaLongitude),
+              longitude: parseFloat(partner.parLongitude),
+
+              latitude: parseFloat(partner.parLatitude),
             }}
           >
-            <Callout tooltip>
-              <View>
-                <Text> {animal.seaLongitude}</Text>
+            <Callout tooltip >
+              <View style={{borderRadius: 10}}>
+                <Text > {partner.parName}</Text>
               </View>
             </Callout>
           </Marker>
         ))}
       </MapView>
-      <FloatingAction
-        color={colors.laranja}
-        actions={[
-          {
-            text: "Adicionar",
-            icon: IconPetMarker,
-            name: "Adicionar",
-            color: colors.azul,
-          },
-        ]}
-        onPressItem={(name) => {
-          console.log(name);
-
-          if (name === "Adicionar") {
-            navigate("Select Animal");
-          }
-        }}
-      />
+      
     </Container>
   );
 };
