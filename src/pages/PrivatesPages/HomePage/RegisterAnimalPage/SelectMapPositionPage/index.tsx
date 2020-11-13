@@ -76,7 +76,7 @@ const SelectMapPosition: React.FC = () => {
           style={styles.nextButton}
           onPress={() => navigate("Register Animal", { position })}
         >
-          <Text style={styles.nextButtonText}>Continue</Text>
+          <Text style={styles.nextButtonText}>Próximo</Text>
           <Icon
             size={25}
             name="navigate-next"
