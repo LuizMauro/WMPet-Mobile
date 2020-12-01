@@ -12,14 +12,14 @@ import { useNavigation } from "@react-navigation/native";
 import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
 
-import getValidationErrors from "../../utils/getValidationErros";
-import { useAuth } from "../../hooks/auth";
-import { getToken } from '../../utils/getTokenNotification'
-import api from '../../services/api'
+import getValidationErrors from "../../../utils/getValidationErros";
+import { useAuth } from "../../../hooks/auth";
+import { getToken } from "../../../utils/getTokenNotification";
+import api from "../../../services/api";
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import Logo from "../../assets/Logo.png";
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
+import Logo from "../../../assets/Logo.png";
 import Icon from "react-native-vector-icons/Feather";
 
 import {
@@ -57,22 +57,18 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-       const { useDeviceID, useID } =  await signIn({
+        const { useDeviceID, useID } = await signIn({
           email: data.email,
           password: data.password,
         });
 
-        const token =  await getToken();
+        const token = await getToken();
 
-
-        if(useDeviceID !== token){
-          await api.put(`users/edit/deviceid/${useID}`,{
-            useDeviceID: token
-          })
+        if (useDeviceID !== token) {
+          await api.put(`users/edit/deviceid/${useID}`, {
+            useDeviceID: token,
+          });
         }
-
-
-
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -87,13 +83,7 @@ const SignIn: React.FC = () => {
           return;
         }
 
-        Alert.alert(
-          "Ops...",
-          "Ocorreu um erro interno"
-        );
-
-
-
+        Alert.alert("Ops...", "Ocorreu um erro interno");
       }
     },
     [signIn]

@@ -59,14 +59,14 @@ const PrivateProfile: React.FC = () => {
   const { user, signOut } = useAuth();
 
   useEffect(() => {
-    console.log("teste 2");
+    console.log(user);
   }, []);
 
   const renderHeader = () => {
     return (
       <Container>
         <Header>
-          <PhotoUser></PhotoUser>
+          <PhotoUser source={{ uri: user.usePhoto }} />
           <NameUser> {user.useName} </NameUser>
           <EmailUser> {user.useEmail} </EmailUser>
         </Header>

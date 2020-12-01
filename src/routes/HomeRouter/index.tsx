@@ -1,9 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from "../../pages/PrivatesPages/HomePage";
-import SelectMapPosition from "../../pages/PrivatesPages/HomePage/RegisterAnimalPage/SelectMapPositionPage";
-import FormRegisterAnimals from "../../pages/PrivatesPages/HomePage/RegisterAnimalPage/FormAnimalPage";
+import Home from "../../screens/Private/HomePage";
+import SelectMapPosition from "../../screens/Private/HomePage/RegisterAnimalPage/SelectMapPositionPage";
+import FormRegisterAnimals from "../../screens/Private/HomePage/RegisterAnimalPage/FormAnimalPage";
 
 const StackNavigation = createStackNavigator();
 

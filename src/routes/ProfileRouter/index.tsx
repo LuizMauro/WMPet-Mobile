@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import PrivateProfile from "../../pages/PrivatesPages/PrivateProfilePage";
-import FormAnimal from "../../pages/PrivatesPages/PrivateProfilePage/formAnimal";
+import PrivateProfile from "../../screens/Private/PrivateProfilePage";
+import FormAnimal from "../../screens/Private/PrivateProfilePage/formAnimal";
 
 const StackNavigation = createStackNavigator();
 

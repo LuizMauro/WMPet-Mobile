@@ -30,6 +30,7 @@ interface User {
   useName: string;
   useEmail: string;
   useDeviceID: string;
+  usePhoto: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);

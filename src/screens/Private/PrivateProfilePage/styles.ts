@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { FlatList } from "react-native";
 
 import { colors } from "../../../styles/colors";
-import {CardProps} from "../../../components/AnimalCard";
+import { CardProps } from "../../../components/AnimalCard";
 
 export const Container = styled.View`
   display: flex;
@@ -20,12 +20,12 @@ export const Header = styled.View`
   background-color: ${colors.azul};
 `;
 
-export const PhotoUser = styled.View`
+export const PhotoUser = styled.Image`
   height: 120px;
   width: 120px;
   border-radius: 60px;
 
-  background-color: #000;
+  background-color: #fff;
 `;
 
 export const NameUser = styled.Text`
@@ -61,8 +61,6 @@ export const TextDataUser = styled.Text`
 export const Content = styled.View`
   min-height: 200px;
 `;
-
-
 
 export const ItemListAnimal = styled.View`
   height: 60px;

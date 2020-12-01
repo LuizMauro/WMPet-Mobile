@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import PrivateProfile from "../../pages/PrivatesPages/Partners";
+import PrivateProfile from "../../screens/Private/PrivateProfilePage";
 
 const StackNavigation = createStackNavigator();
 
