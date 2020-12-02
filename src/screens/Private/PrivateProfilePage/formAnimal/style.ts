@@ -62,10 +62,11 @@ export const styles = StyleSheet.create({
     borderColor: colors.azul,
     borderWidth: 1.4,
     borderRadius: 20,
-    height: 150,
+    height: 80,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 32,
+    margin: 10,
   },
 });

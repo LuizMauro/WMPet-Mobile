@@ -6,7 +6,7 @@ import { Container, TextInput, IconStyle } from "./styles";
 
 interface InputProps extends TextInputProps {
   name: string;
-  icon: string;
+  icon?: string;
 }
 
 interface IInputValueReference {
@@ -49,11 +49,14 @@ const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {
   return (
     <>
       <Container isFocused={isFocused} isErrored={!!error}>
-        <IconStyle
-          name={icon}
-          size={20}
-          color={isFocused || isFilled ? "#3c9ce9" : "#666"}
-        />
+        {icon && (
+          <IconStyle
+            name={icon}
+            size={20}
+            color={isFocused || isFilled ? "#3c9ce9" : "#666"}
+          />
+        )}
+
         <TextInput
           ref={inputElementRef}
           selectionColor="#3c9ce9"
