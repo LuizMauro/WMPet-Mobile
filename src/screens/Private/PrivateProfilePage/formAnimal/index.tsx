@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Text, TouchableOpacity, View, Image, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Picker } from "@react-native-community/picker";
 import * as Yup from "yup";
 import { Form } from "@unform/mobile";
@@ -42,7 +43,19 @@ interface IRac {
   racType: boolean;
 }
 
+const schema = Yup.object().shape({
+  aniName: Yup.string().required("obrigatório"),
+  aniDescription: Yup.string().required("obrigatório"),
+  aniGenre: Yup.string().required("obrigatório"),
+  aniSize: Yup.string().required("obrigatório"),
+  aniSpecies: Yup.string().required("obrigatório"),
+  colID: Yup.string().required("obrigatório"),
+  racID: Yup.string().required("obrigatório"),
+  furID: Yup.string().required("obrigatório"),
+});
+
 const FormAnimal: React.FC = () => {
+  const { navigate } = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const [responseFur, setResponseFur] = useState<IFur[]>([]);
   const [responseCol, setResponseCol] = useState<ICol[]>([]);
@@ -92,21 +105,6 @@ const FormAnimal: React.FC = () => {
   async function handleAnimal(data: IData) {
     try {
       formRef.current?.setErrors({});
-      // const schema = Yup.object().shape({
-      //   nome: Yup.string()
-      //     .required("Nome obrigatório")
-      //     .min(3, "Minimo 6 caracteres"),
-      //   email: Yup.string()
-      //     .required("Email obrigatório")
-      //     .email("Digite um e-mail válido"),
-      //   password: Yup.string()
-      //     .required("Senha obrigatória")
-      //     .min(6, "Minimo 6 caracteres"),
-      // });
-
-      // await schema.validate(data, {
-      //   abortEarly: false,
-      // });
 
       const finalData = new FormData();
 
@@ -119,8 +117,24 @@ const FormAnimal: React.FC = () => {
       finalData.append("racID", race);
       finalData.append("furID", fur);
 
+      await schema.validate(
+        {
+          aniName: data.nome,
+          aniDescription: data.desc,
+          aniGenre: genero,
+          aniSize: size,
+          aniSpecies: especie,
+          colID: color,
+          racID: race,
+          furID: fur,
+        },
+        {
+          abortEarly: false,
+        }
+      );
+
       if (image1) {
-        finalData.append("photo-animal1", {
+        finalData.append("images", {
           name: `image1.jpg`,
           type: "image/jpg",
           uri: image1,
@@ -128,7 +142,7 @@ const FormAnimal: React.FC = () => {
       }
 
       if (image2) {
-        finalData.append("photo-animal2", {
+        finalData.append("images", {
           name: `image2.jpg`,
           type: "image/jpg",
           uri: image2,
@@ -136,26 +150,33 @@ const FormAnimal: React.FC = () => {
       }
 
       if (image3) {
-        finalData.append("photo-animal3", {
+        finalData.append("images", {
           name: `image3.jpg`,
           type: "image/jpg",
           uri: image3,
         } as any);
       }
 
-      console.log(finalData);
-
-      // const response = await api.post("/users", finalData);
+      await api
+        .post("/animals", finalData)
+        .then((response) => {
+          Alert.alert("Sucesso!", "Pet cadastrado!", [
+            { text: "Voltar", onPress: () => navigate("profile") },
+          ]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
 
         formRef.current?.setErrors(errors);
 
+        Alert.alert("Ops...", "Preencha todos os campos!");
+
         return;
       }
-
-      console.log(err);
 
       Alert.alert("Ops...", "Ocorreu algum problema!");
     }
