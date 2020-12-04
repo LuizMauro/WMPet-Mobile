@@ -22,16 +22,24 @@ export interface CardProps {
   Name: string;
   Race: string;
   Species: boolean;
+  Photo: string;
   To: string;
 }
 
-const AnimalCard: React.FC<CardProps> = ({ ID, Name, Race, Species, To }) => {
+const AnimalCard: React.FC<CardProps> = ({
+  ID,
+  Name,
+  Race,
+  Species,
+  Photo,
+  To,
+}) => {
   const navigation = useNavigation();
 
   return (
     <CardBox>
       <CardImageBox
-        source={DOG}
+        source={{ uri: Photo }}
         resizeMode="cover"
         imageStyle={{ borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
       ></CardImageBox>
