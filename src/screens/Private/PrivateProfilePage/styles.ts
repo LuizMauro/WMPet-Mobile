@@ -4,6 +4,8 @@ import { FlatList } from "react-native";
 import { colors } from "../../../styles/colors";
 import { CardProps } from "../../../components/AnimalCard";
 
+import { IBasicAnimals } from "../../../@interfaces/BasicAnimal";
+
 export const Container = styled.View`
   display: flex;
   justify-content: center;
@@ -68,6 +70,8 @@ export const ItemListAnimal = styled.View`
   margin: 0 10px 0 10px;
 `;
 
-export const ListAnimals = styled(FlatList as new () => FlatList<CardProps>)`
+export const ListAnimals = styled(
+  FlatList as new () => FlatList<IBasicAnimals>
+)`
   flex-grow: 1;
 `;

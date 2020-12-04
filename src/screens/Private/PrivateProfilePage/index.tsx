@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 import { FloatingAction } from "react-native-floating-action";
 
 import { useAuth } from "../../../hooks/auth";
+import api from "../../../services/api";
 
 import AnimalCard, { CardProps } from "../../../components/AnimalCard";
 import { colors } from "../../../styles/colors";
@@ -23,44 +24,29 @@ import { Text, TouchableOpacity } from "react-native";
 
 import IconPetMarker from "../../../assets/mapa-pet.png";
 
-const DATA: CardProps[] = [
-  {
-    ID: "1",
-    Name: "Bilu",
-    Race: "Outros",
-    Species: true,
-    To: "Detalhes",
-  },
-  {
-    ID: "2",
-    Name: "Bilu2",
-    Race: "Outros",
-    Species: true,
-    To: "Detalhes",
-  },
-  {
-    ID: "3",
-    Name: "Bilu3",
-    Race: "Outros",
-    Species: true,
-    To: "Detalhes",
-  },
-  {
-    ID: "4",
-    Name: "Bilu4",
-    Race: "Outros",
-    Species: true,
-    To: "Detalhes",
-  },
-];
+import { IBasicAnimals } from "../../../@interfaces/BasicAnimal";
 
 const PrivateProfile: React.FC = () => {
   const { navigate } = useNavigation();
   const { user, signOut } = useAuth();
+  const [myAnimals, setMyAnimals] = useState<IBasicAnimals[]>([]);
 
   useEffect(() => {
-    console.log(user);
+    console.log("chamou");
+    loadMyAnimals();
   }, []);
+
+  const loadMyAnimals = async () => {
+    await api
+      .get(`animals/${user.useID}`)
+      .then((response) => {
+        console.log(response.data);
+        setMyAnimals(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const renderHeader = () => {
     return (
@@ -85,15 +71,16 @@ const PrivateProfile: React.FC = () => {
     <>
       <ListAnimals
         ListHeaderComponent={renderHeader}
-        data={DATA}
+        data={myAnimals}
         renderItem={(item) => (
           <Container>
             <AnimalCard
-              ID={item.item.ID}
-              Name={item.item.Name}
-              Race={item.item.Race}
-              To={item.item.To}
-              Species={item.item.Species}
+              ID={item.item.aniID}
+              Name={item.item.aniName}
+              Race={item.item.racID.racDescription}
+              Species={item.item.aniSpecies}
+              Photo={item.item.photos[0].picPath}
+              To={"Detalhes"}
             />
           </Container>
         )}
