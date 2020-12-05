@@ -2,8 +2,9 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+import { colors } from "../../styles/colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { darken } from "polished";
+
 import {
   CardBox,
   CardImageBox,
@@ -11,10 +12,8 @@ import {
   CardDescription,
   CardButton,
   CardText,
+  NameAnimal,
 } from "./styles";
-
-import DOG from "../../../assets/dog_teste.jpg";
-import { colors } from "../../styles/colors";
 
 export interface CardProps {
   ID: string;
@@ -37,39 +36,26 @@ const AnimalCard: React.FC<CardProps> = ({
   const navigation = useNavigation();
 
   return (
-    <CardBox>
-      <CardImageBox
-        source={{ uri: Photo }}
-        resizeMode="cover"
-        imageStyle={{ borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
-      ></CardImageBox>
-      <CardDescription>
-        <CardText>
-          <CardTitle> Tipo: {Species ? "Cachorro" : "Gato"} </CardTitle>
-          <CardTitle> Raça: {Race} </CardTitle>
-          <CardTitle> Nome: {Name} </CardTitle>
-        </CardText>
-        <CardButton
-          style={{
-            borderTopWidth: 1,
-            borderTopColor: darken("0.1", colors.fontColorCard),
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.navigate(To)}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <CardTitle>Visualizar</CardTitle>
-            <Icon size={20} name="navigate-next"></Icon>
-          </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate(To)}>
+      <CardBox>
+        <CardImageBox
+          source={{ uri: Photo }}
+          resizeMode="cover"
+          imageStyle={{ borderRadius: 60 }}
+        ></CardImageBox>
+        <CardDescription>
+          <CardText>
+            <NameAnimal> {Name}</NameAnimal>
+            <CardTitle> Tipo: {Species ? "Cachorro" : "Gato"} </CardTitle>
+            <CardTitle> Raça: {Race} </CardTitle>
+          </CardText>
+        </CardDescription>
+
+        <CardButton>
+          <Icon size={30} name="navigate-next" color={colors.laranja}></Icon>
         </CardButton>
-      </CardDescription>
-    </CardBox>
+      </CardBox>
+    </TouchableOpacity>
   );
 };
 

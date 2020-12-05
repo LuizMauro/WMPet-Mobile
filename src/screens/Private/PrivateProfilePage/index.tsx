@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 import { FloatingAction } from "react-native-floating-action";
@@ -30,25 +30,33 @@ const PrivateProfile: React.FC = () => {
   const { navigate } = useNavigation();
   const { user, signOut } = useAuth();
   const [myAnimals, setMyAnimals] = useState<IBasicAnimals[]>([]);
-
-  useEffect(() => {
-    console.log("chamou");
-    loadMyAnimals();
-  }, []);
+  const [refreshing, setRefreshing] = useState(false);
 
   const loadMyAnimals = async () => {
+    setRefreshing(true);
     await api
       .get(`animals/${user.useID}`)
       .then((response) => {
-        console.log(response.data);
         setMyAnimals(response.data);
+        setRefreshing(false);
       })
       .catch((error) => {
+        setRefreshing(false);
         console.log(error);
       });
   };
 
-  const renderHeader = () => {
+  useFocusEffect(
+    useCallback(() => {
+      let isActive = true;
+      loadMyAnimals();
+      return () => {
+        isActive = false;
+      };
+    }, [])
+  );
+
+  const _renderHeader = () => {
     return (
       <Container>
         <Header>
@@ -67,11 +75,14 @@ const PrivateProfile: React.FC = () => {
       </Container>
     );
   };
+
   return (
     <>
       <ListAnimals
-        ListHeaderComponent={renderHeader}
+        ListHeaderComponent={_renderHeader}
         data={myAnimals}
+        refreshing={refreshing}
+        onRefresh={loadMyAnimals}
         renderItem={(item) => (
           <Container>
             <AnimalCard

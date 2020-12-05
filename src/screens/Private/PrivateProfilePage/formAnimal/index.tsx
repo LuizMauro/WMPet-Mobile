@@ -66,8 +66,8 @@ const FormAnimal: React.FC = () => {
   const [image2, setImage2] = useState<string>("");
   const [image3, setImage3] = useState<string>("");
   const [especie, setEspecie] = useState<string>("Cachorro");
-  const [genero, setGenero] = useState<string>("");
-  const [size, setSize] = useState<string>("");
+  const [genero, setGenero] = useState<string>("M");
+  const [size, setSize] = useState<string>("Médio");
   const [color, setColor] = useState<string>("");
   const [race, setRace] = useState<string>("");
 
@@ -217,6 +217,9 @@ const FormAnimal: React.FC = () => {
     const tipyRace = convertEspecie();
     const filtred = responseRac.filter((item) => item.racType === tipyRace);
     setRaceFiltred(filtred);
+    if (filtred.length > 0) {
+      setRace(filtred[0].racID);
+    }
   }, [responseRac, especie]);
 
   return (
