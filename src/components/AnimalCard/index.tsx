@@ -1,6 +1,5 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import { colors } from "../../styles/colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -16,27 +15,22 @@ import {
 } from "./styles";
 
 export interface CardProps {
-  ID: string;
-  //Picture: string;
   Name: string;
   Race: string;
   Species: boolean;
   Photo: string;
-  To: string;
+  Action: Function;
 }
 
 const AnimalCard: React.FC<CardProps> = ({
-  ID,
   Name,
   Race,
   Species,
   Photo,
-  To,
+  Action,
 }) => {
-  const navigation = useNavigation();
-
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(To)}>
+    <TouchableOpacity onPress={() => Action()}>
       <CardBox>
         <CardImageBox
           source={{ uri: Photo }}

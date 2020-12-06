@@ -95,7 +95,6 @@ const home: React.FC = () => {
           longitudeDelta: 0.004,
         }}
         customMapStyle={MapConfig}
-
       >
         <Circle
           center={{
@@ -154,7 +153,7 @@ const home: React.FC = () => {
         ]}
         onPressItem={(name) => {
           if (name === "perdido") {
-            navigate("Select Animal");
+            navigate("Select-position-animal");
           } else if (name === "encontrado") {
             console.log("encontrado");
           }

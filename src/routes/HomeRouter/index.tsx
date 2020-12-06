@@ -2,10 +2,11 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../../screens/Private/HomePage";
-import SelectMapPosition from "../../screens/Private/HomePage/RegisterAnimalPage/SelectMapPositionPage";
-import FormRegisterAnimals from "../../screens/Private/HomePage/RegisterAnimalPage/FormAnimalPage";
-import PetExistsOrNew from "../../screens/Private/HomePage/RegisterAnimalPage/PetExistsOrNew";
-
+import SelectMapPosition from "../../screens/Private/HomePage/RegisterLostAnimal/SelectMapPositionPage";
+import FormRegisterAnimals from "../../screens/Private/HomePage/RegisterLostAnimal/FormAnimalPage";
+import PetExistsOrNew from "../../screens/Private/HomePage/RegisterLostAnimal/PetExistsOrNew";
+import PetExists from "../../screens/Private/HomePage/RegisterLostAnimal/ExistsPet";
+import ConfirmPet from "../../screens/Private/HomePage/RegisterLostAnimal/ConfirmPet";
 const StackNavigation = createStackNavigator();
 
 export const HomeRouter = () => {
@@ -22,7 +23,7 @@ export const HomeRouter = () => {
           headerShown: true,
           headerTitle: "Última localização do pet",
         }}
-        name="Select Animal"
+        name="Select-position-animal"
         component={SelectMapPosition}
       />
 
@@ -33,6 +34,24 @@ export const HomeRouter = () => {
         }}
         name="Pet-exists-or-new"
         component={PetExistsOrNew}
+      />
+
+      <StackNavigation.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Qual deles está perdido?",
+        }}
+        name="Pet-exists"
+        component={PetExists}
+      />
+
+      <StackNavigation.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Já vamos finalizar",
+        }}
+        name="Confirm-pet"
+        component={ConfirmPet}
       />
 
       <StackNavigation.Screen

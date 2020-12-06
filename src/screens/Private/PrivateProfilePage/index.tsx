@@ -76,6 +76,10 @@ const PrivateProfile: React.FC = () => {
     );
   };
 
+  const goToPage = () => {
+    navigate("Detalhes");
+  };
+
   return (
     <>
       <ListAnimals
@@ -86,12 +90,11 @@ const PrivateProfile: React.FC = () => {
         renderItem={(item) => (
           <Container>
             <AnimalCard
-              ID={item.item.aniID}
               Name={item.item.aniName}
               Race={item.item.racID.racDescription}
               Species={item.item.aniSpecies}
               Photo={item.item.photos[0].picPath}
-              To={"Detalhes"}
+              Action={goToPage}
             />
           </Container>
         )}
