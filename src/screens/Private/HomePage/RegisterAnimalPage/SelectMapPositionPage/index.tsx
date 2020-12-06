@@ -12,9 +12,8 @@ import MapView, { Marker } from "react-native-maps";
 import { getLocation } from "../../../../../utils/updateLocation";
 import { MapConfig } from "../../../../../utils/MapConfig";
 
-
 import Icon from "react-native-vector-icons/MaterialIcons";
-import IconPersonMarker from "../../../../../assets/mapa-pessoa.png";
+import IconPetMarker from "../../../../../assets/mapa-pet.png";
 import { colors } from "../../../../../styles/colors";
 
 const SelectMapPosition: React.FC = () => {
@@ -61,13 +60,11 @@ const SelectMapPosition: React.FC = () => {
           latitudeDelta: 0.02,
           longitudeDelta: 0.02,
         }}
-
         customMapStyle={MapConfig}
-
       >
         {!!position.latitude && (
           <Marker
-            icon={IconPersonMarker}
+            icon={IconPetMarker}
             coordinate={{
               latitude: position.latitude,
               longitude: position.longitude,
@@ -79,7 +76,7 @@ const SelectMapPosition: React.FC = () => {
       {!!position.latitude && (
         <RectButton
           style={styles.nextButton}
-          onPress={() => navigate("Register Animal", { position })}
+          onPress={() => navigate("Pet-exists-or-new", { position })}
         >
           <Text style={styles.nextButtonText}>Próximo</Text>
           <Icon
