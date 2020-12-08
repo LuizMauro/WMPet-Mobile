@@ -19,6 +19,7 @@ import { Container } from "./styles";
 import IconPersonMarker from "../../../assets/mapa-pessoa.png";
 import IconPartner from "../../../assets/Icon.png";
 import { colors } from "../../../styles/colors";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 interface ILocation {
@@ -42,6 +43,8 @@ const home: React.FC = () => {
   );
   const { user } = useAuth();
 
+  
+
   useFocusEffect(
     useCallback(() => {
       let isActive = true;
@@ -59,7 +62,7 @@ const home: React.FC = () => {
         const response = await api.get(
           `partners/range/${currentLocation.coords.longitude}/${currentLocation.coords.latitude}`
         );
-            console.log(response.data);
+                  
         setPartner(response.data);
       };
 
@@ -78,6 +81,10 @@ const home: React.FC = () => {
         <ActivityIndicator color={colors.laranja} size="large" />
       </Container>
     );
+  }
+
+  const Redirect = (partner : IPartner) => {
+    navigate("details", {partner: partner});
   }
 
   return (
@@ -128,10 +135,11 @@ const home: React.FC = () => {
 
               latitude: parseFloat(partner.parLatitude),
             }}
+            onCalloutPress={()=> Redirect(partner)}
           >
             <Callout tooltip >
               <View style={{borderRadius: 10}}>
-                <Text > {partner.parName}</Text>
+                  <Text>{partner.parName}</Text>
               </View>
             </Callout>
           </Marker>
