@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import PartnersGeral from "../../screens/Private/Partners";
-import PartnerDetails from "../../screens/Private/Partners/PartinerDetails";
+import PartnerDetails from "../../screens/Private/Partners/PartnerDetails";
 
 const StackNavigation = createStackNavigator();
 
