@@ -7,6 +7,8 @@ import FormRegisterAnimals from "../../screens/Private/HomePage/RegisterLostAnim
 import PetExistsOrNew from "../../screens/Private/HomePage/RegisterLostAnimal/PetExistsOrNew";
 import PetExists from "../../screens/Private/HomePage/RegisterLostAnimal/ExistsPet";
 import ConfirmPet from "../../screens/Private/HomePage/RegisterLostAnimal/ConfirmPet";
+
+import AnimalPerdidoNotification from "../../screens/Private/Notificacao";
 const StackNavigation = createStackNavigator();
 
 export const HomeRouter = () => {
@@ -46,6 +48,12 @@ export const HomeRouter = () => {
       />
 
       <StackNavigation.Screen
+        options={{ headerShown: true, headerTitle: "Registre o animal" }}
+        name="Register-Animal-Search"
+        component={FormRegisterAnimals}
+      />
+
+      <StackNavigation.Screen
         options={{
           headerShown: true,
           headerTitle: "Já vamos finalizar",
@@ -55,9 +63,9 @@ export const HomeRouter = () => {
       />
 
       <StackNavigation.Screen
-        options={{ headerShown: true, headerTitle: "Registre o animal" }}
-        name="Register Animal"
-        component={FormRegisterAnimals}
+        options={{ headerShown: true, headerTitle: "Animal perdido :(" }}
+        name="AnimalPerdidoNotificacao"
+        component={AnimalPerdidoNotification}
       />
     </StackNavigation.Navigator>
   );

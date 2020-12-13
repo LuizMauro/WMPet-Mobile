@@ -23,8 +23,7 @@ export const getToken = async () => {
       return;
     }
 
-     token = (await Notifications.getExpoPushTokenAsync()).data;
-
+    token = (await Notifications.getExpoPushTokenAsync()).data;
   } else {
     alert("Must use physical device for Push Notifications");
   }
@@ -41,20 +40,20 @@ export const getToken = async () => {
   return token;
 };
 
-export const receiveNotifications = () => {
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: true,
-      shouldSetBadge: true,
-    }),
-  });
+// export const receiveNotifications = () => {
+//   Notifications.setNotificationHandler({
+//     handleNotification: async () => ({
+//       shouldShowAlert: true,
+//       shouldPlaySound: true,
+//       shouldSetBadge: true,
+//     }),
+//   });
 
-  Notifications.addNotificationReceivedListener((notification) => {
-    // console.log(notification);
-  });
+//   Notifications.addNotificationReceivedListener((notification) => {
+//     console.log(notification);
+//   });
 
-  Notifications.addNotificationResponseReceivedListener((response) => {
-    // console.log(response);
-  });
-};
+//   Notifications.addNotificationResponseReceivedListener((response) => {
+//     console.log(response);
+//   });
+// };

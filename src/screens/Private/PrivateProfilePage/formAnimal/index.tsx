@@ -157,6 +157,11 @@ const FormAnimal: React.FC = () => {
         } as any);
       }
 
+      if (!image1 && !image2 && !image3) {
+        Alert.alert("Ops...", "Preencha todos os campos!");
+        return;
+      }
+
       await api
         .post("/animals", finalData)
         .then((response) => {

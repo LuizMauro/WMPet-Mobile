@@ -21,6 +21,8 @@ import IconPersonMarker from "../../../assets/mapa-pessoa.png";
 import IconPetMarker from "../../../assets/mapa-pet.png";
 import { colors } from "../../../styles/colors";
 
+import * as Notifications from "expo-notifications";
+
 interface ILocation {
   lat: number;
   long: number;
@@ -42,8 +44,31 @@ const home: React.FC = () => {
   );
   const { user } = useAuth();
 
+  const receiveNotifications = () => {
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
+      }),
+    });
+
+    Notifications.addNotificationResponseReceivedListener((response: any) => {
+      if (response.notification.request.content.data.to) {
+        const route = response.notification.request.content.data.to;
+
+        if (route === "AnimalPerdidoNotificacao") {
+          const AnimalID = response.notification.request.content.data.animalID;
+
+          navigate(route, { AnimalID });
+        }
+      }
+    });
+  };
+
   useFocusEffect(
     useCallback(() => {
+      receiveNotifications();
       let isActive = true;
       setLoading(true);
 

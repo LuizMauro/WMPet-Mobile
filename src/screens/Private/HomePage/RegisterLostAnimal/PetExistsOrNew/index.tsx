@@ -16,6 +16,8 @@ const PetExistsOrNew: React.FC = () => {
   const route = useRoute();
   const params = route.params as IParams;
 
+  console.log(params);
+
   return (
     <Container>
       <ViewHorizontal>
@@ -24,7 +26,11 @@ const PetExistsOrNew: React.FC = () => {
         >
           <Text>Existente</Text>
         </ButtonChoice>
-        <ButtonChoice>
+        <ButtonChoice
+          onPress={() =>
+            navigate.navigate("Register-Animal-Search", { params })
+          }
+        >
           <Text>Novo</Text>
         </ButtonChoice>
       </ViewHorizontal>

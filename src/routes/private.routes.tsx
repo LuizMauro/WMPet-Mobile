@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeRouter } from "./HomeRouter";
 import { SearchAnimalsRoutes } from "./searchAnimalsRouter";
-import { PartnerRoutes } from './partnerRouter';
+import { PartnerRoutes } from "./partnerRouter";
 import { ProfileRoutes } from "./ProfileRouter";
 
 import { colors } from "../styles/colors";

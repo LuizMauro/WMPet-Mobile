@@ -3,11 +3,10 @@ import React from "react";
 import Routes from "./routes";
 
 import AppProvider from "./hooks";
-import { receiveNotifications } from "./utils/getTokenNotification";
-import { View } from "react-native";
+// import { receiveNotifications } from "./utils/getTokenNotification";
 
 const App: React.FC = () => {
-  receiveNotifications();
+  // receiveNotifications();
   return (
     <AppProvider>
       <Routes />
