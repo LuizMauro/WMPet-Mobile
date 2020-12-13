@@ -151,6 +151,7 @@ const home: React.FC = () => {
               latitude: parseFloat(animal.seaLatitude),
               longitude: parseFloat(animal.seaLongitude),
             }}
+            onCalloutPress={() => navigate("details")}
           >
             <Callout tooltip>
               <View>

@@ -76,8 +76,8 @@ const PrivateProfile: React.FC = () => {
     );
   };
 
-  const goToPage = () => {
-    navigate("Detalhes");
+  const goToPage = (aniID: string) => {
+    navigate("AnimalDetails", { aniID });
   };
 
   return (
@@ -94,7 +94,7 @@ const PrivateProfile: React.FC = () => {
               Race={item.item.racID.racDescription}
               Species={item.item.aniSpecies}
               Photo={item.item.photos[0].picPath}
-              Action={goToPage}
+              Action={() => goToPage(item.item.aniID)}
             />
           </Container>
         )}

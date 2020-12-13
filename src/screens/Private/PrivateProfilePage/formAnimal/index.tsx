@@ -220,6 +220,8 @@ const FormAnimal: React.FC = () => {
 
   useEffect(() => {
     const tipyRace = convertEspecie();
+    console.log(tipyRace);
+    setEspecie(tipyRace ? "Cachorro" : "Gato");
     const filtred = responseRac.filter((item) => item.racType === tipyRace);
     setRaceFiltred(filtred);
     if (filtred.length > 0) {
