@@ -8,7 +8,7 @@ import PetExistsOrNew from "../../screens/Private/HomePage/RegisterLostAnimal/Pe
 import PetExists from "../../screens/Private/HomePage/RegisterLostAnimal/ExistsPet";
 import ConfirmPet from "../../screens/Private/HomePage/RegisterLostAnimal/ConfirmPet";
 
-import AnimalPerdidoNotification from "../../screens/Private/Notificacao";
+import AnimalPerdidoNotification from "../../screens/Private/AnimalPerdidoDetalhes";
 const StackNavigation = createStackNavigator();
 
 export const HomeRouter = () => {
@@ -60,6 +60,12 @@ export const HomeRouter = () => {
         }}
         name="Confirm-pet"
         component={ConfirmPet}
+      />
+
+      <StackNavigation.Screen
+        options={{ headerShown: true, headerTitle: "Animal perdido :(" }}
+        name="AnimalPerdidoDetalhes"
+        component={AnimalPerdidoNotification}
       />
 
       <StackNavigation.Screen

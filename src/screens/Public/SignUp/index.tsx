@@ -32,6 +32,7 @@ interface SignInFormData {
   email: string;
   password: string;
   nome: string;
+  whatsapp: string;
 }
 
 const SignUp: React.FC = () => {
@@ -72,12 +73,32 @@ const SignUp: React.FC = () => {
         } as any);
       }
 
-      const response = await api.post("/users", finalData);
+      await api
+        .post("/users", finalData)
+        .then(async (response) => {
+          console.log({
+            conDescription: data.whatsapp,
+            conType: 0,
+            useID: response.data.useID,
+          });
 
-      if (response.data.useID) {
-        Alert.alert("Boa!", "Conta criada com sucesso!");
-        navigation.goBack();
-      }
+          await api
+            .post("/contacts", {
+              conDescription: data.whatsapp,
+              conType: 0,
+              useID: response.data.useID,
+            })
+            .then((response) => {
+              Alert.alert("Boa!", "Conta criada com sucesso!");
+              navigation.goBack();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log("aqui", error);
+        });
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -165,6 +186,15 @@ const SignUp: React.FC = () => {
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="email-address"
+              />
+
+              <Input
+                icon="smartphone"
+                name="whatsapp"
+                placeholder="Seu Whatsapp para contato"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="phone-pad"
               />
               <Input
                 icon="lock"

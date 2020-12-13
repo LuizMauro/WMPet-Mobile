@@ -151,11 +151,24 @@ const home: React.FC = () => {
               latitude: parseFloat(animal.seaLatitude),
               longitude: parseFloat(animal.seaLongitude),
             }}
-            onCalloutPress={() => navigate("details")}
+            onCalloutPress={() =>
+              navigate("AnimalPerdidoDetalhes", { AnimalID: animal.seaID })
+            }
           >
             <Callout tooltip>
-              <View>
-                <Text> {animal.seaLongitude}</Text>
+              <View
+                style={{
+                  width: 150,
+                  height: 50,
+                  borderRadius: 10,
+                  backgroundColor: "#3c9ce9",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ textAlign: "center", color: "#fff" }}>
+                  Ver mais
+                </Text>
               </View>
             </Callout>
           </Marker>
